@@ -1,0 +1,97 @@
+{
+    "full_name": "Firstname Lastname",
+    "email": "example@example.com",
+    "git_username_or_organization": "username",
+    "collection_namespace": "some-namespace",
+    "collection_name": "some_name",
+	"collection_version": "0.1.0",
+	"collection_description": "A short description",
+    "git_url": "https://github.com/{{ cookiecutter.git_username_or_organization }}/{{ cookiecutter.collection_namespace }}.{{ cookiecutter.collection_name }}",
+    "minimum_python_version": [
+        "3.10",
+        "3.11",
+        "3.12",
+        "3.13",
+        "3.14"
+    ],
+    "package_manager": [
+        "uv",
+        "pip"
+    ],
+    "galaxy_first_tag": [
+        "application",
+        "cloud",
+        "database",
+        "eda",
+        "infrastructure",
+        "linux",
+        "monitoring",
+        "networking",
+        "security",
+        "storage",
+        "tools",
+        "windows"
+    ],
+    "include_example_inventory_plugins": ["y", "n"],
+    "include_example_action_plugins": ["y", "n"],
+    "__collection_namespace_normalized": "{{ cookiecutter.collection_namespace.lower().replace(' ', '_').replace('-', '_') }}",
+    "__collection_name_normalized": "{{ cookiecutter.collection_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "__git_repo_name": "{{ cookiecutter.__collection_namespace_normalized }}.{{ cookiecutter.__collection_name_normalized }}",
+    "__template_repo": "https://github.com/btr1975/cookiecutter-ansible-collection",
+    "__template_version": "2.0.3",
+    "_new_lines":"\n",
+    "_copy_without_render": [
+        ".github",
+        "templates/ios",
+        "templates/iosxr",
+        "templates/nxos"
+    ],
+    "__prompts__": {
+        "full_name": "Your Full Name",
+        "email": "Your E-Mail Address",
+        "git_username_or_organization": "Your GitHub Username or GitHub Organization Name",
+        "collection_namespace": "The Collection Namespace",
+        "collection_name": "The Collection Name",
+        "collection_version": "The Collection Version",
+        "collection_description": "A short description",
+        "git_url": "The full GIT URL",
+        "minimum_python_version": {
+            "__prompt__": "Which minimum Python version will be supported",
+            "3.10": "3.10",
+            "3.11": "3.11",
+            "3.12": "3.12",
+            "3.13": "3.13",
+            "3.14": "3.14"
+        },
+        "package_manager": {
+            "__prompt__": "Which pacakge manager for Python will be supported",
+            "uv": "UV By Astral",
+            "pip": "PIP (The built in Python Package Installer)"
+        },
+        "galaxy_first_tag": {
+            "__prompt__": "Ansible galaxy.yml requires at least 1 tag to search on. What does this collection deal in?  (You can add others later)",
+            "application": "Application Collection",
+            "cloud": "Cloud Collection",
+            "database": "Database Collection",
+            "eda": "EDA Collection",
+            "infrastructure": "Infrastructure Collection",
+            "linux": "Linux Collection",
+            "monitoring": "Monitoring Collection",
+            "networking": "Networking Collection",
+            "security": "Security Collection",
+            "storage": "Storage Collection",
+            "tools": "Tools Collection",
+            "windows": "Windows Collection"
+        },
+        "include_example_inventory_plugins": {
+            "__prompt__": "Include example inventory plugins?",
+            "y": "Yes",
+            "n": "No"
+        },
+        "include_example_action_plugins": {
+            "__prompt__": "Include example action plugins?",
+            "y": "Yes",
+            "n": "No"
+        }
+    }
+}

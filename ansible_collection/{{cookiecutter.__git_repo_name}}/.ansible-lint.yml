@@ -1,0 +1,15 @@
+---
+
+# https://docs.ansible.com/projects/lint/configuring/
+
+use_default_rules: true
+
+verbosity: 1
+
+quiet: true
+
+offline: true
+
+exclude_paths:
+  - "venv/"
+  - ".venv/"

@@ -1,0 +1,17 @@
+---
+block-list-secret-scan: []
+branch: "master"
+custom-tool-name: "Checkov"
+directory:
+  - "./"
+evaluate-variables: true
+external-modules-download-path: ".external_modules"
+framework:
+  - - "ansible"
+mask: []
+secrets-history-timeout: "1h"
+secrets-scan-file-type: []
+skip-path:
+  - "./.venv"
+  - "./venv"
+summary-position: "top"

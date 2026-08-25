@@ -1,0 +1,12 @@
+# These are the libraries required develop or test your app
+# NOTICE THE FIRST LINE INCLUDES THE requirements.txt
+#
+-r requirements.txt
+pytest-cov
+pytest-ansible
+black
+yamllint
+pip-audit
+bandit
+checkov
+ansible-lint

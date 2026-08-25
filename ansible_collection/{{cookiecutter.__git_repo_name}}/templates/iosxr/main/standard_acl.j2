@@ -1,0 +1,13 @@
+ipv4 access-list {{ name }}
+{% for sequence in sequences %}
+{% if sequence.append_option_to_end is defined %}
+{% set append_option_to_end = sequence.append_option_to_end %}
+{% else %}
+{% set append_option_to_end = None %}
+{% endif %}
+{% if sequence.action == 'remark' %}
+ {{ sequence.sequence }} {{ sequence.action }} {{ sequence.remark }}
+{% else %}
+ {{ sequence.sequence }} {{ sequence.action }} ipv4 {{ sequence.source }} any{{ append_option_to_end }}
+{% endif %}
+{% endfor %}

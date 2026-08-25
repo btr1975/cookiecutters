@@ -1,0 +1,132 @@
+{% if cookiecutter.package_manager == 'uv' %}
+[build-system]
+requires = [
+    "setuptools>=67.6.0",
+    "wheel>=0.40.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.__git_repo_name }}"
+dynamic = ["readme"]
+version = "{{ cookiecutter.collection_version }}"
+requires-python = ">={{ cookiecutter.minimum_python_version }}"
+description = "{{ cookiecutter.collection_description }}"
+keywords = [
+]
+authors = [
+  { name="{{ cookiecutter.full_name }}", email="{{ cookiecutter.email }}" },
+]
+maintainers = [
+  {name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}"},
+]
+license = "MIT"
+license-files = [
+    "LICENSE"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    {% if cookiecutter.minimum_python_version == '3.10' %}"Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.11' %}"Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.12' %}"Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.13' %}"Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.14' %}"Programming Language :: Python :: 3.14",{% endif -%}
+
+]
+
+dependencies = [
+    "ansible",
+    {% if cookiecutter.include_example_inventory_plugins == "y" %}"pymongo",{% endif %}
+]
+
+[dependency-groups]
+dev = [
+    "pytest-cov",
+    "pytest-ansible",
+    "black",
+    "yamllint",
+    "bandit",
+    "checkov",
+    "ansible-lint",
+]
+
+[project.urls]
+Documentation = "https://{{ cookiecutter.__git_repo_name }}.readthedocs.io/en/latest/"
+Source = "{{ cookiecutter.git_url }}"
+Tracker = "{{ cookiecutter.git_url }}/issues"
+
+[tool.setuptools.packages.find]
+include = [
+    "/*",
+]
+
+# Add or remove file extensions to include the data
+[tool.setuptools.package-data]
+"*" = ["*"]
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+readme = {file = "README.md", content-type = "text/markdown"}
+{% endif %}
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+markers = [
+    "generic_tests: marks tests as generic_tests (deselect with -m not generic_tests)",
+]
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.run]
+command_line= "-m pytest -vvv"
+
+[tool.coverage.report]
+include = [
+    "plugins/*"
+]
+fail_under = 70
+
+[tool.black]
+line-length = 120
+target-version = [
+    "py311",
+    "py312",
+]
+
+[tool.bandit]
+exclude_dirs = [
+    "tests",
+    "venv",
+    ".venv",
+    "docs",
+    "collections",
+]
+
+{% if cookiecutter.package_manager == 'uv' %}
+# UV settings reference https://docs.astral.sh/uv/reference/settings/
+
+[tool.uv]
+keyring-provider = "subprocess"
+native-tls = true
+
+{% endif %}
