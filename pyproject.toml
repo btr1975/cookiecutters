@@ -66,6 +66,7 @@ include = [
     "ansible_collection",
     "go",
     "python_fastapi_openapi",
+    "python_library",
 ]
 
 
