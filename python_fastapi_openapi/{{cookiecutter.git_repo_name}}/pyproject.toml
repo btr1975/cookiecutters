@@ -1,0 +1,169 @@
+[build-system]
+requires = [
+    "setuptools>=67.6.0",
+    "wheel>=0.40.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.git_repo_name }}"
+{% if cookiecutter.package_manager == 'pip' %}
+dynamic = ["version", "readme", "dependencies"]
+{% elif cookiecutter.package_manager == 'uv' %}
+dynamic = ["readme"]
+version = "{{ cookiecutter.app_version }}"
+{% endif %}
+requires-python = ">={{ cookiecutter.minimum_python_version }}"
+description = "{{ cookiecutter.app_description }}"
+keywords = [
+]
+authors = [
+  { name="{{ cookiecutter.full_name }}", email="{{ cookiecutter.email }}" },
+]
+maintainers = [
+  {name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}"},
+]
+license = "MIT"
+license-files = [
+    "LICENSE"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    {% if cookiecutter.minimum_python_version == '3.10' %}"Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.11' %}"Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.12' %}"Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.13' %}"Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",{% endif -%}
+    {% if cookiecutter.minimum_python_version == '3.14' %}"Programming Language :: Python :: 3.14",{% endif -%}
+
+]
+
+{% if cookiecutter.package_manager == 'uv' %}
+dependencies = [
+    "fastapi",
+    "pydantic",
+    "uvicorn",
+    {% if cookiecutter.use_niquests == 'y' %}"niquests",{% endif %}
+    {% if cookiecutter.use_niquests == 'y' %}"urllib3>=2.7.0",{% endif %}
+    {% if cookiecutter.use_cryptography == 'y' %}"cryptography",{% endif %}
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "tomli; python_version < '3.11'",
+    "pytest-cov",
+    "sphinx",
+    "pylint",
+    "pytest-asyncio",
+    "myst-parser",
+    "sphinx_rtd_theme",
+    "sphinxcontrib-mermaid",
+    "httpx",
+    "bandit",
+    "mypy",
+]
+{% endif %}
+
+[project.urls]
+Documentation = "https://{{ cookiecutter.git_repo_name }}.readthedocs.io/en/latest/"
+Source = "{{ cookiecutter.git_url }}"
+Tracker = "{{ cookiecutter.git_url }}/issues"
+
+[project.scripts]
+{{ cookiecutter.git_repo_name }}-cli = "{{cookiecutter.__app_name}}:cli"
+
+[tool.setuptools.packages.find]
+include = [
+    "{{cookiecutter.__app_name}}*",
+]
+
+# Add or remove file extensions to include the data
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.rst"]
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+readme = {file = "README.md", content-type = "text/markdown"}
+{% if cookiecutter.package_manager == 'pip' %}
+version = {attr = "{{cookiecutter.__app_name}}.version.__version__"}
+dependencies = {file = "requirements.txt"}
+{% endif %}
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+asyncio_mode = "auto"
+markers = [
+    "place_holder: marks tests as place_holder (deselect with -m 'not place_holder')",
+]
+
+[tool.coverage.run]
+command_line= "-m pytest -vvv"
+
+[tool.coverage.report]
+include = [
+    "{{cookiecutter.__app_name}}/*"
+]
+fail_under = 70
+
+[tool.pylint]
+max-line-length = 120
+# This allows pylint to complain on FIXME and XXX notes
+notes = [
+    "FIXME",
+    "XXX",
+]
+fail-under = 9.9
+
+[tool.black]
+line-length = 120
+{% if cookiecutter.minimum_python_version <= '3.11' %}
+target-version = [
+    "py311",
+    "py312",
+]
+{% endif %}
+{% if cookiecutter.minimum_python_version >= '3.12' %}
+target-version = [
+    "py312",
+]
+{% endif %}
+
+[tool.bandit]
+exclude_dirs = [
+    "tests",
+    "venv",
+    "docs",
+]
+
+[tool.mypy]
+python_version = "{{ cookiecutter.minimum_python_version }}"
+
+{% if cookiecutter.package_manager == 'uv' %}
+# UV settings reference https://docs.astral.sh/uv/reference/settings/
+
+[tool.uv]
+keyring-provider = "subprocess"
+system-certs = true
+
+{% endif %}

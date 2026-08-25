@@ -1,6 +1,6 @@
 # Makefile for project needs
 # Author: Ben Trachtenberg
-# Version: 1.0.1
+# Version: 1.0.2
 #
 
 .PHONY: all info coverage pytest black security pip-export
@@ -22,13 +22,15 @@ pytest:
 pylint:
 	@uv run pylint ansible_collection/hooks/
 	@uv run pylint go/hooks/
+	@uv run pylint python_fastapi_openapi/hooks/
 
 black:
 	@uv run black ansible_collection/hooks/
 	@uv run black ansible_collection/tests/
 	@uv run black go/hooks/
 	@uv run black go/tests/
-
+	@uv run black python_fastapi_openapi/hooks/
+	@uv run black python_fastapi_openapi/tests/
 
 security:
 	@uv run bandit -c pyproject.toml -r .

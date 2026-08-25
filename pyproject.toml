@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cookiecutters"
-version = "2.0.3"
+version = "1.0.0"
 dynamic = ["readme"]
 requires-python = ">=3.10"
 description = "Several useful cookiecutters"
@@ -64,7 +64,8 @@ readme = {file = "README.md", content-type = "text/markdown"}
 [tool.setuptools.packages.find]
 include = [
     "ansible_collection",
-    "go"
+    "go",
+    "python_fastapi_openapi",
 ]
 
 
@@ -76,6 +77,7 @@ markers = [
 testpaths = [
     "ansible_collection/tests",
     "go/tests",
+    "python_fastapi_openapi/tests"
 ]
 
 [tool.coverage.run]
@@ -85,6 +87,7 @@ command_line= "-m pytest -vvv"
 include = [
     "ansible_collection/hooks/*",
     "go/hooks/*",
+    "python_fastapi_openapi/hooks/*",
 ]
 fail_under = 70
 
@@ -100,7 +103,6 @@ fail-under = 9.9
 [tool.black]
 line-length = 120
 target-version = [
-    "py311",
     "py312",
 ]
 
@@ -110,7 +112,8 @@ exclude_dirs = [
     "venv",
     ".venv",
     "docs",
-    "{{cookiecutter.__git_repo_name}}"
+    "{{cookiecutter.__git_repo_name}}",
+    "{{cookiecutter.git_repo_name}}"
 ]
 
 [tool.uv]
