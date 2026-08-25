@@ -1,9 +1,9 @@
-# cookiecutter-ansible-collection
+# cookiecutters
 
-| BRANCH | STATUS |
-| ------ |--------|
-| main | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml/badge.svg?branch=main)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml) |
-| develop | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml/badge.svg?branch=develop)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml) |
+| BRANCH | STATUS                                                                                                                                                                                                                              |
+| ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| main | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=main)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml)    |
+| develop | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=develop)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml) |
 
 * This is a "cookiecutter" repository designed to be used as a framework to create repository structure.
 
@@ -23,13 +23,13 @@ pip install cookiecutter
 * Use the latest
 
 ```text
-cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection
+cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection --directory example
 ```
 
 * Use a specific version
 
 ```text
-cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection -c 1.0.0
+cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection  --directory example -c 1.0.0
 ```
 
 4. Now you will be asked a series of questions. This is an example
