@@ -23,6 +23,7 @@ pylint:
 	@uv run pylint ansible_collection/hooks/
 	@uv run pylint go/hooks/
 	@uv run pylint python_fastapi_openapi/hooks/
+	@uv run pylint python_library/hooks/
 
 black:
 	@uv run black ansible_collection/hooks/
@@ -31,6 +32,8 @@ black:
 	@uv run black go/tests/
 	@uv run black python_fastapi_openapi/hooks/
 	@uv run black python_fastapi_openapi/tests/
+	@uv run black python_library/hooks/
+	@uv run black python_library/tests/
 
 security:
 	@uv run bandit -c pyproject.toml -r .

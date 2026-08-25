@@ -77,7 +77,8 @@ markers = [
 testpaths = [
     "ansible_collection/tests",
     "go/tests",
-    "python_fastapi_openapi/tests"
+    "python_fastapi_openapi/tests",
+    "python_library/tests",
 ]
 
 [tool.coverage.run]
@@ -88,6 +89,7 @@ include = [
     "ansible_collection/hooks/*",
     "go/hooks/*",
     "python_fastapi_openapi/hooks/*",
+    "python_library/hooks/*",
 ]
 fail_under = 70
 
