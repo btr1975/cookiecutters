@@ -6,11 +6,11 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cookiecutter-ansible-collection"
+name = "cookiecutters"
 version = "2.0.3"
 dynamic = ["readme"]
 requires-python = ">=3.10"
-description = "A cookiecutter for an Ansible Collection"
+description = "Several useful cookiecutters"
 keywords = [
 ]
 authors = [
@@ -41,6 +41,8 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 
+
+
 dependencies = [
     "cookiecutter~=2.7.1",
     "urllib3>=2.7.0",
@@ -59,6 +61,13 @@ dev = [
 [tool.setuptools.dynamic]
 readme = {file = "README.md", content-type = "text/markdown"}
 
+[tool.setuptools.packages.find]
+include = [
+    "ansible_collection",
+    "go"
+]
+
+
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
 markers = [
@@ -66,6 +75,7 @@ markers = [
 ]
 testpaths = [
     "ansible_collection/tests",
+    "go/tests",
 ]
 
 [tool.coverage.run]
@@ -73,7 +83,8 @@ command_line= "-m pytest -vvv"
 
 [tool.coverage.report]
 include = [
-    "ansible_collection/hooks/*"
+    "ansible_collection/hooks/*",
+    "go/hooks/*",
 ]
 fail_under = 70
 

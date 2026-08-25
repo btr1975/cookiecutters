@@ -278,7 +278,7 @@ wheels = [
 ]
 
 [[package]]
-name = "cookiecutter-ansible-collection"
+name = "cookiecutters"
 version = "2.0.3"
 source = { editable = "." }
 dependencies = [

@@ -161,7 +161,7 @@ cookiecutter==2.7.1 \
     --hash=sha256:ca7bb7bc8c6ff441fbf53921b5537668000e38d56e28d763a1b73975c66c6138 \
     --hash=sha256:cee50defc1eaa7ad0071ee9b9893b746c1b3201b66bf4d3686d0f127c8ed6cf9
     # via
-    #   cookiecutter-ansible-collection
+    #   cookiecutters
     #   pytest-cookies
 coverage==7.11.3 \
     --hash=sha256:004cdcea3457c0ea3233622cd3464c1e32ebba9b41578421097402bee6461b63 \
@@ -727,5 +727,5 @@ urllib3==2.7.0 \
     --hash=sha256:231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c \
     --hash=sha256:9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897
     # via
-    #   cookiecutter-ansible-collection
+    #   cookiecutters
     #   requests

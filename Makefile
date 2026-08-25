@@ -21,10 +21,14 @@ pytest:
 
 pylint:
 	@uv run pylint ansible_collection/hooks/
+	@uv run pylint go/hooks/
 
 black:
 	@uv run black ansible_collection/hooks/
 	@uv run black ansible_collection/tests/
+	@uv run black go/hooks/
+	@uv run black go/tests/
+
 
 security:
 	@uv run bandit -c pyproject.toml -r .
