@@ -23,13 +23,13 @@ pip install cookiecutter
 * Use the latest
 
 ```text
-cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection --directory example
+cookiecutter https://github.com/btr1975/cookiecutters --directory example
 ```
 
 * Use a specific version
 
 ```text
-cookiecutter https://github.com/btr1975/cookiecutter-ansible-collection  --directory example -c 1.0.0
+cookiecutter https://github.com/btr1975/cookiecutters  --directory example -c 1.0.0
 ```
 
 4. Now you will be asked a series of questions. This is an example
