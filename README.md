@@ -1,9 +1,9 @@
 # cookiecutters
 
-| BRANCH | STATUS                                                                                                                                                                                                                              |
-| ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| main | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=main)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml)    |
-| develop | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=develop)](https://github.com/btr1975/cookiecutter-ansible-collection/actions/workflows/test-bake.yml) |
+| BRANCH | STATUS                                                                                                                                                                                                            |
+| ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| main | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=main)](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml)    |
+| develop | [![Unit-Testing, Coverage, Linting](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml/badge.svg?branch=develop)](https://github.com/btr1975/cookiecutters/actions/workflows/test-bake.yml) |
 
 * This is a "cookiecutter" repository designed to be used as a framework to create repository structure.
 
