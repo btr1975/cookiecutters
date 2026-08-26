@@ -134,3 +134,5 @@ dmypy.json
 # No vscode
 .vscode/
 
+# allow build folger in go template
+!go/{{cookiecutter.git_repo_name}}/build
