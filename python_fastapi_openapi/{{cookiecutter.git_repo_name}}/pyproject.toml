@@ -80,6 +80,7 @@ dev = [
     "httpx",
     "bandit",
     "mypy",
+    "complexipy",
 ]
 {% endif %}
 
@@ -158,6 +159,23 @@ exclude_dirs = [
 
 [tool.mypy]
 python_version = "{{ cookiecutter.minimum_python_version }}"
+
+[tool.complexipy]
+paths = ["{{cookiecutter.__app_name}}", "tests"]
+max-complexity-allowed = 15
+snapshot-create = false
+snapshot-ignore = false
+failed = false
+quiet = false
+ignore-complexity = false
+color = "auto"
+sort = "asc"
+exclude = []
+check-script = false
+no-ignore = false
+report-ignored = false
+output-format = ["json"]
+output = "complexipy-results.json"
 
 {% if cookiecutter.package_manager == 'uv' %}
 # UV settings reference https://docs.astral.sh/uv/reference/settings/

@@ -17,3 +17,4 @@ httpx
 twine
 bandit
 mypy
+complexipy

@@ -47,7 +47,7 @@
         "https"
     ],
     "__template_repo": "https://github.com/btr1975/cookiecutters",
-    "__template_version": "2.0.10",
+    "__template_version": "2.0.11",
     "_new_lines": "\n",
     "_copy_without_render": [
         "{{cookiecutter.__app_name}}/templates",
