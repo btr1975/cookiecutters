@@ -1,7 +1,7 @@
 @ECHO OFF
 REM Makefile for project needs
 REM Author: Ben Trachtenberg
-REM Version: 2.0.1
+REM Version: 2.0.2
 REM
 
 SET option=%1
@@ -17,6 +17,7 @@ IF "%option%" == "all" (
     black tests/
     pylint {{cookiecutter.__app_name}}\
     mypy {{cookiecutter.__app_name}}\
+    complexipy
     pytest --cov --cov-report=html -vvv
     bandit -c pyproject.toml -r .
     pip-audit -r requirements.txt
@@ -69,6 +70,11 @@ IF "%option%" == "mypy" (
     GOTO END
 )
 
+IF "%option%" == "complexipy" (
+    complexipy
+    GOTO END
+)
+
 {% if cookiecutter.app_documents_location == 'github-pages' %}
 IF "%option%" == "gh-pages" (
     rmdir /s /q docs\source\code
@@ -85,6 +91,7 @@ IF "%option%" == "all" (
     uv run black tests/
     uv run pylint {{cookiecutter.__app_name}}\
     uv run mypy {{cookiecutter.__app_name}}\
+    uv run complexipy
     uv run pytest --cov --cov-report=html -vvv
     uv run bandit -c pyproject.toml -r .
     uv export --no-dev --no-emit-project --no-editable > requirements.txt
@@ -133,6 +140,11 @@ IF "%option%" == "mypy" (
     GOTO END
 )
 
+IF "%option%" == "complexipy" (
+    uv run complexipy
+    GOTO END
+)
+
 IF "%option%" == "pip-export" (
     uv export --no-dev --no-emit-project --no-editable > requirements.txt
     uv export --no-emit-project --no-editable > requirements-dev.txt
@@ -155,6 +167,7 @@ IF "%option%" == "gh-pages" (
 @ECHO     all             To run coverage, format, pylint, and check-vuln
 @ECHO     build           To build a distribution
 @ECHO     coverage        To run coverage and display ASCII and output to htmlcov
+@ECHO     complexipy      To complexity in the code
 @ECHO     dev-run         To run the app
 @ECHO     check-vuln      To check for vulnerabilities in the dependencies
 @ECHO     check-security  To check for vulnerabilities in the code

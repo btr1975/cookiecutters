@@ -1,10 +1,10 @@
 # Makefile for project needs
 # Author: Ben Trachtenberg
-# Version: 2.0.1
+# Version: 2.0.2
 #
 
 .PHONY: all info build build-container coverage format pylint pytest gh-pages build dev-run start-container \
-	stop-container remove-container check-vuln check-security pip-export mypy
+	stop-container remove-container check-vuln check-security pip-export mypy complexipy
 
 info:
 	@echo "make options"
@@ -13,6 +13,7 @@ info:
 	@echo "    build-container     To build a container image"
 	@echo "    check-vuln          To check for vulnerabilities in the dependencies"
 	@echo "    check-security      To check for vulnerabilities in the code"
+	@echo "    complexipy          To complexity in the code"
 	@echo "    coverage            To run coverage and display ASCII and output to htmlcov"
 	@echo "    dev-run             To run the app"
 	@echo "    format              To format the code with black"
@@ -27,7 +28,7 @@ info:
 
 {% if cookiecutter.package_manager == 'pip' %}
 
-all: format pylint mypy coverage check-security check-vuln
+all: format pylint mypy complexipy coverage check-security check-vuln
 
 build:
 	@python -m build
@@ -57,6 +58,9 @@ check-security:
 mypy:
 	@mypy {{cookiecutter.__app_name}}/
 
+complexipy:
+	@complexipy
+
 {% if cookiecutter.app_documents_location == 'github-pages' %}
 gh-pages:
 	@rm -rf ./docs/source/code
@@ -66,7 +70,7 @@ gh-pages:
 
 {% elif cookiecutter.package_manager == 'uv' %}
 
-all: format pylint mypy coverage check-security pip-export
+all: format pylint mypy complexipy coverage check-security pip-export
 
 build:
 	@uv build --wheel --sdist
@@ -92,6 +96,9 @@ check-security:
 
 mypy:
 	@uv run mypy {{cookiecutter.__app_name}}/
+
+complexipy:
+	@uv run complexipy
 
 pip-export:
 	@uv export --no-dev --no-emit-project --no-editable > requirements.txt

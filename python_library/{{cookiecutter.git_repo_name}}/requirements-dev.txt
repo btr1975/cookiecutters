@@ -16,3 +16,4 @@ sphinxcontrib-mermaid
 twine
 bandit
 mypy
+complexipy
