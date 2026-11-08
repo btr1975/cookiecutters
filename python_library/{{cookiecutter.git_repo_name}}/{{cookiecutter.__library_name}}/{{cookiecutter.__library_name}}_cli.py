@@ -9,7 +9,6 @@ from {{cookiecutter.__library_name}}.example import print_hello, print_goodbye
 def cli_argument_parser() -> ArgumentParser:
     """Function to create the argument parser
 
-    :rtype: ArgumentParser
     :returns: The argument parser
     """
     arg_parser = ArgumentParser(description='{{cookiecutter.git_repo_name}}-cli')
@@ -32,7 +31,7 @@ def cli_argument_parser() -> ArgumentParser:
 
 def cli() -> None:
     """Function to run the command line
-    :rtype: None
+
     :returns: Nothing it is the CLI
     """
     arg_parser = None
@@ -50,16 +49,20 @@ def cli() -> None:
 
     except AttributeError as error:
         print(f'\n !!! {error} !!! \n')
-        arg_parser.print_help()
+        if isinstance(arg_parser, ArgumentParser):
+            arg_parser.print_help()
 
     except FileNotFoundError as error:
         print(f'\n !!! {error} !!! \n')
-        arg_parser.print_help()
+        if isinstance(arg_parser, ArgumentParser):
+            arg_parser.print_help()
 
     except FileExistsError as error:
         print(f'\n !!! {error} !!! \n')
-        arg_parser.print_help()
+        if isinstance(arg_parser, ArgumentParser):
+            arg_parser.print_help()
 
     except Exception as error:  # pylint: disable=broad-exception-caught
         print(f'\n !!! {error} !!! \n')
-        arg_parser.print_help()
+        if isinstance(arg_parser, ArgumentParser):
+            arg_parser.print_help()

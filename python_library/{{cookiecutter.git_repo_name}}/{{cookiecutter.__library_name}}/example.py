@@ -6,10 +6,8 @@ This is an EXAMPLE
 def print_hello(name: str) -> None:
     """Function to print hello
 
-    :type name: String
     :param name: A Name
 
-    :rtype: None
     :returns: Nothing it prints
     """
     print(f'Hello {name}!')
@@ -18,10 +16,8 @@ def print_hello(name: str) -> None:
 def print_goodbye(name: str) -> None:
     """Function to print goodbye
 
-    :type name: String
     :param name: A Name
 
-    :rtype: None
     :returns: Nothing it prints
     """
     print(f'Goodbye {name}!')
