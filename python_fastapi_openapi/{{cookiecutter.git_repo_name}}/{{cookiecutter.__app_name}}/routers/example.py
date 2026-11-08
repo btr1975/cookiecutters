@@ -25,10 +25,8 @@ class ResponseSchema(BaseModel):  # pylint: disable=too-few-public-methods
 async def get_example(name: str) -> ResponseSchema:
     """Function for the example endpoint
 
-    :type name: String
     :param name: A name
 
-    :rtype: ResponseSchema
     :returns: The JSON Data
 
     :raises HTTPException: If anything goes wrong

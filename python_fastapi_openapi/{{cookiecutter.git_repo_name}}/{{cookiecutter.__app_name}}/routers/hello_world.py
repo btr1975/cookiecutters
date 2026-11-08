@@ -1,7 +1,8 @@
 """
 Hello World Example # FIXME: This is an example you should delete it
 """
-import os
+
+from pathlib import Path
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -9,7 +10,7 @@ from fastapi.templating import Jinja2Templates
 router = APIRouter(
 )
 
-templates_path = os.path.join(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0], 'templates')
+templates_path = Path(__file__).parent.parent.joinpath("templates").resolve().as_posix()
 templates = Jinja2Templates(directory=templates_path)
 
 
@@ -17,9 +18,9 @@ templates = Jinja2Templates(directory=templates_path)
             description='Hello World', name='Hello World', include_in_schema=False)
 async def get_hello(request: Request) -> templates.TemplateResponse:
     """Function to display the Hello World
-    :type request: fastapi.Request
+
     :param request: The request from the user
-    :rtype: fastapi.templating.Jinja2Templates.TemplateResponse
+
     :returns: The webpage
     """
     error = None
@@ -41,9 +42,9 @@ async def get_hello(request: Request) -> templates.TemplateResponse:
             description='Hello World', name='Hello World', include_in_schema=False)
 async def get_hello_error(request: Request) -> templates.TemplateResponse:
     """Function to display the Hello World
-    :type request: fastapi.Request
+
     :param request: The request from the user
-    :rtype: fastapi.templating.Jinja2Templates.TemplateResponse
+
     :returns: The webpage
     """
     error = 'OH NO THERE WAS SOME ERROR!!'

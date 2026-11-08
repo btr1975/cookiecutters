@@ -2,7 +2,7 @@
 FastAPI WebApp
 """
 {% if cookiecutter.include_webpages == "y" %}
-import os
+from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 {% endif %}
 from fastapi import FastAPI
@@ -15,7 +15,7 @@ from {{cookiecutter.__app_name}}.routers import example
 {% if cookiecutter.include_webpages == "y" %}
 from {{cookiecutter.__app_name}}.routers import hello_world
 
-static_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
+static_path = Path(__file__).parent.joinpath("static").resolve().as_posix()
 {% endif %}
 
 # Used to config swagger UI

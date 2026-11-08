@@ -45,7 +45,7 @@ classifiers = [
 
 dependencies = [
     "cookiecutter~=2.7.1",
-    "urllib3>=2.7.0",
+    "urllib3>=2.8.0",
 ]
 
 [dependency-groups]
