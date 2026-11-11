@@ -66,6 +66,7 @@ include = [
     "ansible_collection",
     "go",
     "python_fastapi_openapi",
+    "python_fastmcp",
     "python_library",
 ]
 
@@ -79,6 +80,7 @@ testpaths = [
     "ansible_collection/tests",
     "go/tests",
     "python_fastapi_openapi/tests",
+    "python_fastmcp/tests",
     "python_library/tests",
 ]
 
@@ -90,6 +92,7 @@ include = [
     "ansible_collection/hooks/*",
     "go/hooks/*",
     "python_fastapi_openapi/hooks/*",
+    "python_fastmcp/hooks/*",
     "python_library/hooks/*",
 ]
 fail_under = 70
