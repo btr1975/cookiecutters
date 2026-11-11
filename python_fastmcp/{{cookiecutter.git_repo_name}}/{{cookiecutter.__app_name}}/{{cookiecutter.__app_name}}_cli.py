@@ -3,6 +3,7 @@ CLI for {{cookiecutter.__app_name}}
 """
 from argparse import ArgumentParser
 import uvicorn
+from {{cookiecutter.__app_name}}.web_app import mcp
 
 
 def cli_argument_parser() -> ArgumentParser:
@@ -44,7 +45,7 @@ def cli() -> None:
                         host=args.bind, port=int(args.port))
 
         if args.which_sub == 'stdio':
-            pass
+            mcp.run()
 
     except AttributeError as error:
         print(f'\n !!! {error} !!! \n')
