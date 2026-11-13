@@ -26,6 +26,10 @@
         "uv",
         "pip"
     ],
+    "serve_skills": [
+        "y",
+        "n"
+    ],
     "use_niquests": [
         "n",
         "y"
@@ -79,6 +83,11 @@
             "__prompt__": "Which pacakge manager for Python will be supported",
             "uv": "UV By Astral",
             "pip": "PIP (The built in Python Package Installer)"
+        },
+        "serve_skills": {
+            "__prompt__": "Serve skills from MCP",
+            "y": "Yes",
+            "n": "No"
         },
         "use_niquests": {
             "__prompt__": "Will you use the niquests library",
