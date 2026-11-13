@@ -1,4 +1,6 @@
-import os, sys
+from pathlib import Path
+import sys
 import pytest
-base_path = os.path.join(os.path.abspath(os.path.dirname(__name__)))
-sys.path.append(os.path.join(base_path))
+
+base_path = Path(__file__).parent.parent
+sys.path.append(base_path.resolve().as_posix())
